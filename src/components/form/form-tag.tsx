@@ -1,27 +1,26 @@
 import { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { Form } from "../ui/form";
-import { ScrollArea } from "../ui/scroll-area";
 import { cn } from "@src/lib/utils";
 import { Button } from "@src/components/ui/button";
 
-type FormTagProps<T> = {
-  form: UseFormReturn<T | any>;
+type FormTagProps = {
+  form: UseFormReturn<any>;
   children: React.ReactNode;
-  onSubmit: SubmitHandler<T | any>;
-  isLoading?: boolean;
+  onSubmit: SubmitHandler<any>;
+  disabled?: boolean;
   className?: string;
   buttonTitle?: string;
 };
 
-export const FormTag = <T,>({
+export const FormTag = ({
   form,
   children,
   onSubmit,
   className,
-  isLoading = false,
+  disabled: isLoading = false,
   buttonTitle = "Submit",
-}: FormTagProps<T>) => {
-  const styles = cn("grid w-full content-center grid-cols-12 gap-4", className);
+}: FormTagProps) => {
+  const styles = cn("grid w-auto content-center grid-cols-12 gap-4", className);
   return (
     <Form {...form}>
       <form

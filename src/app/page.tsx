@@ -98,7 +98,7 @@ const Page = () => {
   };
   return (
     <div className="flex h-screen justify-center items-center">
-      <Card className="p-4 w-full">
+      <Card className="p-4 w-auto">
         <Form onSubmit={onSubmit} fields={formFields} form={form} />
       </Card>
     </div>
