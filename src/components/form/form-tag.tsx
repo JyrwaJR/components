@@ -21,30 +21,26 @@ export const FormTag = <T,>({
   isLoading = false,
   buttonTitle = "Submit",
 }: FormTagProps<T>) => {
-  const styles = cn("grid w-full grid-cols-12 gap-2 px-2", className);
+  const styles = cn("grid w-full content-center grid-cols-12 gap-4", className);
   return (
     <Form {...form}>
-      <ScrollArea>
-        <form
-          noValidate
-          onSubmit={form.handleSubmit(onSubmit)}
-          className={styles}
-        >
-          {children}
-          <div className="col-span-full">
-            {/* <DialogFooter className=""> */}
-            <Button
-              disabled={!form.formState.isDirty || isLoading}
-              type="submit"
-              // fullWidth on mobile
-              className="w-full md:w-auto"
-            >
-              {isLoading ? "Loading" : buttonTitle}
-            </Button>
-            {/* </DialogFooter> */}
-          </div>
-        </form>
-      </ScrollArea>
+      <form
+        noValidate
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={styles}
+      >
+        {children}
+        <div className="col-span-full flex md:justify-end justify-center items-center">
+          <Button
+            disabled={!form.formState.isDirty || isLoading}
+            type="submit"
+            className="w-full md:w-auto"
+          >
+            {isLoading ? "Loading" : buttonTitle}
+          </Button>
+          {/* </DialogFooter> */}
+        </div>
+      </form>
     </Form>
   );
 };

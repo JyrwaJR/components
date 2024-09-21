@@ -1,8 +1,10 @@
 import { RegisterOptions } from "react-hook-form";
+
 export interface OptionsT {
   label: string;
   value: string | number | boolean | any;
 }
+
 export interface FormFieldType {
   name: string;
   label?: string;
