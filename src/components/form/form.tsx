@@ -1,15 +1,15 @@
 "use client";
 import React, { useMemo } from "react";
-import { UseFormReturn, FieldValues } from "react-hook-form";
+import { SubmitHandler, UseFormReturn } from "react-hook-form";
 import { FormFieldType } from "./type";
 import { cn } from "@src/lib/utils";
 import { FormTag } from "./form-tag";
 import { FieldRenderer } from "./field-renderer";
-import { FormControl, FormField } from "../ui/form";
+import { FormField } from "../ui/form";
 
 type FormProps = {
-  onSubmit: any;
-  form: UseFormReturn<any, any>;
+  onSubmit: SubmitHandler<any>;
+  form: UseFormReturn<any>;
   disabled?: boolean;
   fields: FormFieldType[];
   className?: string;

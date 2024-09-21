@@ -5,10 +5,11 @@ import { FormFieldType } from "./type";
 import { Button } from "../ui/button";
 import { EyeClosedIcon, EyeOpenIcon } from "@radix-ui/react-icons";
 import { FormFieldLabel } from "./form-field-label";
+import { ControllerRenderProps } from "react-hook-form";
 
 type PasswordFieldProps = {
   input: FormFieldType;
-  field: any;
+  field: ControllerRenderProps<any, any>;
 };
 
 export const PasswordField = ({ input, field }: PasswordFieldProps) => {

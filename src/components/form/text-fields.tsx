@@ -1,11 +1,12 @@
-import { FormDescription, FormItem, FormLabel, FormMessage } from "../ui/form";
+import { ControllerRenderProps } from "react-hook-form";
+import { FormDescription, FormItem, FormMessage } from "../ui/form";
 import { Input } from "../ui/input";
 import { FormFieldLabel } from "./form-field-label";
 import { FormFieldType } from "./type";
 
 type TextFieldProps = {
   input: FormFieldType;
-  field: any;
+  field: ControllerRenderProps<any, any>;
 };
 
 export const TextField = ({ input, field }: TextFieldProps) => {

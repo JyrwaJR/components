@@ -1,3 +1,4 @@
+import { InputProps } from "react-day-picker";
 import { RegisterOptions } from "react-hook-form";
 
 export interface OptionsT {
@@ -9,7 +10,6 @@ export interface FormFieldType {
   name: string;
   label?: string;
   required?: boolean;
-  select?: boolean;
   defaultValue?: string | number | boolean | Date | undefined | any;
   register?: RegisterOptions;
   helperText?: string;
@@ -18,6 +18,6 @@ export interface FormFieldType {
   type?: string;
   readOnly?: boolean;
   options?: OptionsT[];
-  inputProps?: any;
+  inputProps?: InputProps;
   placeholder?: string;
 }

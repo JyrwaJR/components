@@ -1,31 +1,25 @@
 import { ControllerRenderProps } from "react-hook-form";
 import { FormDescription, FormItem, FormMessage } from "../ui/form";
-import { Input } from "../ui/input";
 import { FormFieldLabel } from "./form-field-label";
 import { FormFieldType } from "./type";
+import { Textarea } from "../ui/textarea";
 
-type NumberFieldProps = {
+type TextAreaProps = {
   input: FormFieldType;
   field: ControllerRenderProps<any, any>;
 };
 
-export const NumberField = ({ input, field }: NumberFieldProps) => {
+export const TextAreaFields = ({ input, field }: TextAreaProps) => {
   return (
     <FormItem className="w-full">
       <FormFieldLabel label={input.label} required={input.required} />
-      <Input
+      <Textarea
         {...field}
         className="flex"
+        rows={input.rows || 4}
         placeholder={input.placeholder || "Please enter a value"}
-        disabled={input.readOnly}
-        inputMode="numeric"
-        type="number"
-        onChange={(e) => {
-          const value = Number(e.target.value);
-          field.onChange(value);
-        }}
       />
-      <FormDescription>{input.helperText}</FormDescription>
+      <FormDescription>{input.helperText ?? " "}</FormDescription>
       <FormMessage />
     </FormItem>
   );

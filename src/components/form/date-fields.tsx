@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format, parse } from "date-fns";
 import { CalendarIcon } from "@radix-ui/react-icons";
 import { Calendar } from "@src/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
@@ -6,21 +6,21 @@ import {
   FormControl,
   FormDescription,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "../ui/form";
 import { FormFieldType } from "./type";
 import { Button } from "../ui/button";
 import { cn } from "@src/lib/utils";
 import { FormFieldLabel } from "./form-field-label";
+import { ControllerRenderProps } from "react-hook-form";
 type DateFieldProps = {
   input: FormFieldType;
-  field: any;
+  field: ControllerRenderProps<any, any>;
 };
 
 export const DateField = ({ input, field }: DateFieldProps) => {
   return (
-    <FormItem className="max-w-full">
+    <FormItem className="w-full">
       <FormFieldLabel label={input.label} required={input.required} />
       <Popover>
         <PopoverTrigger asChild>
@@ -33,7 +33,14 @@ export const DateField = ({ input, field }: DateFieldProps) => {
               )}
             >
               {field.value ? (
-                format(new Date(field.value), "PPP")
+                typeof field.value === "string" && field.value.includes("/") ? (
+                  format(
+                    parse(field.value, "dd/MM/yyyy", new Date()),
+                    "yyyy-MM-dd",
+                  )
+                ) : (
+                  format(field.value, "yyyy-MM-dd")
+                )
               ) : (
                 <span>Pick a date</span>
               )}
@@ -50,8 +57,10 @@ export const DateField = ({ input, field }: DateFieldProps) => {
           />
         </PopoverContent>
       </Popover>
-      <FormDescription>{input.helperText}</FormDescription>
-      <FormMessage />
+      <div className="max-w-full">
+        <FormDescription>{input.helperText}</FormDescription>
+        <FormMessage />
+      </div>
     </FormItem>
   );
 };
