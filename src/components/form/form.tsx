@@ -31,7 +31,7 @@ export const Form = ({
       form={form}
       onSubmit={form.handleSubmit(onSubmit)}
       className={className}
-      isLoading={disabled}
+      disabled={disabled}
     >
       <>
         {fields.map((input, i) => (
